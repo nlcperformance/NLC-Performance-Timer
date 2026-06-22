@@ -40,7 +40,8 @@
             background-size: 20px 20px;
             color: #e5e5e5;
             font-family: 'Oswald', sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             touch-action: manipulation;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -88,6 +89,9 @@
             transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
+            /* Ensure text wrapping on very narrow phones */
+            white-space: normal;
+            word-wrap: break-word;
         }
         .btn-tactical:active { transform: translateY(2px); }
         .btn-tactical.selected {
@@ -108,8 +112,8 @@
     </style>
 </head>
 <body>
-    <div class="scanline-overlay"></div>
-    <div id="root" class="h-screen w-full relative z-10 flex flex-col"></div>
+    <div class="scanline-overlay fixed"></div>
+    <div id="root" class="min-h-[100dvh] w-full relative z-10 flex flex-col"></div>
 
     <script type="text/babel" data-presets="react,env">
         const { useState, useEffect, useRef, useCallback } = React;
